@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.yannick.androidclient.com.example.yannick.androidclient.navdrawer.TouchEventView
+        android:id="@+id/drawingView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageButton
+        android:id="@+id/colorPickerDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/color_picker_image"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/strokeWidthButtonDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/stroke_width_button"
+        android:layout_alignParentRight="true"
+        android:layout_above="@+id/colorPickerDraw"/>
+
+    <ImageButton
+        android:id="@+id/redoButtonDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/redo_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+
+    <ImageButton
+        android:id="@+id/undoButtonDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/undo_button"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/redoButtonDraw"/>
+
+</RelativeLayout>
