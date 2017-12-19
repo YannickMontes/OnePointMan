@@ -6,7 +6,9 @@ const mapSocketUser = new Map();
 const ADD_GROUP_NOTIFICATION_TYPE = 'ADDED_TO_GROUP';
 const REMOVE_GROUP_NOTIFICATION_TYPE = 'REMOVED_FROM_GROUP';
 
-socket.listen(5000);
+socket.listen(5000, () =>{
+	console.log("Socket listening on port 5000");
+});
 
 io.on('connection', function (clientSocket) {
 
