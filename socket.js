@@ -11,38 +11,43 @@ socket.listen(3002);
 io.on('connection', function (clientSocket) {
 
     console.log('Client connecté avec id ' + clientSocket.id);
-
     clientSocket.emit('Notification', 'Bienvenue sur OnepointMan !');
 
     clientSocket.on('mapUserID', function (data) {
-        console.log('Socket id : ' + socket.id);
-        console.log('Received user id : ' + data["userId"]);
+        console.log('Socket id : ' + clientSocket.id);
+        console.log('Received user id : ' + Object.values(data));
 
-        mapSocketUser.set(data["userId"], clientSocket);
-
-        mapSocketUser.forEach(function (userid, socketid) {
-            console.log(userid + " = " + socketid);
+        mapSocketUser.set(data["userId"].toString(), clientSocket);
+        mapSocketUser.forEach(function (socket, userid) {
+			console.log(userid + " = " + socket);
         });
     });
 
     clientSocket.on('disconnect', function (clientSocket) {
         console.log('Got disconnect!');
 
-        mapSocketUser.delete(mapSocketUser.get(clientSocket.id));
+        mapSocketUser.delete(mapSocketUser.get(clientSocket));
     });
 });
 
 io.on('disconnect', function (clientSocket) {
     console.log('Got disconnect!');
 
-    mapSocketUser.delete(mapSocketUser.get(clientSocket.id));
+    mapSocketUser.delete(mapSocketUser.get(clientSocket));
 });
 
 const sendNotification = (notificationType, userIdToNotif, ...data) => {
 
-    let clientSocket = mapSocketUser.get(userIdToNotif);
-
+	let clientSocket = null;
+	mapSocketUser.forEach(function (socket, userid) {
+		console.log(userid + " = " + socket);
+		console.log(userid == userIdToNotif);
+		if (userid == userIdToNotif)
+			clientSocket = socket;
+    });
     //For group notifType => data[0] = groupName
+	console.log('clientSocket : ' + clientSocket);
+	console.log('userIdToNotif : ' + userIdToNotif);
     switch (notificationType) {
         case ADD_GROUP_NOTIFICATION_TYPE :
             clientSocket.emit('userAdded Notification', {message: 'Ajouté au groupe ' + data[0] + ' !'});

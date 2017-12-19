@@ -63,7 +63,7 @@ router.get('/getGroupInfo/:idgroupe', function (req, res) {
             sender.sendResponse(sender.BAD_REQUEST, e.toString(), res)
         });
 
-    console.log('END GET getGroupInfo/idgroupe');
+    //console.log('END GET getGroupInfo/idgroupe');
 });
 
 const getUserDataFromGroup = (idGroup) => {
@@ -175,7 +175,7 @@ router.get('/positions/:iduser/:idgroup', function (req, res) {
                 if (diff > 8.64e+7) {// le nombre de millisecs en 1 jour hehe
                     dontPush = true;
                 }
-                console.log(diff);
+                //console.log(diff);
                 //pas renvoyer
                 let pinpoint = {
                     idpinpoint: element.idpinpoint,
@@ -352,7 +352,7 @@ let getUsersPositions = (idgroup) =>
 function compareTimes(currentTime, lastLocationTime) {
     let difference = currentTime - lastLocationTime;
     let toReturn = false;
-    console.log(difference);
+    //console.log(difference);
     if (difference < 900000){
         toReturn = true
     }

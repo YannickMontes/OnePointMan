@@ -42,8 +42,8 @@ router.post(('/updateposition'), function (req, res) {
                 .toString();
             db.none(updateUserTable)
                 .then(() => {
-                    console.log('Updated position of user in USER ');
-                    console.log(groups);
+                    //console.log('Updated position of user in USER ');
+                    //console.log(groups);
                     groups.forEach(element => {
                         //pour chaque groupe, s'il décide de partager sa position avec, on update sa position
                         if (element.sharesposition === true) {
@@ -56,7 +56,7 @@ router.post(('/updateposition'), function (req, res) {
                                 .toString();
                             db.none(query)
                                 .then(() => {
-                                    console.log('Updated position of user in group ' + element.idgroup);
+                                    //console.log('Updated position of user in group ' + element.idgroup);
                                 })
                                 .catch(e => {
 
@@ -135,13 +135,13 @@ router.post('/updatemsg', function (req, res) {
         iduser: req.body.iduser,
         msg: req.body.msg
     };
-    console.log(toUpdate);
+    //console.log(toUpdate);
     let query = squel.update({replaceSingleQuotes: true, singleQuoteReplacement: `''`})
         .table('public."USER"')
         .set('msg', toUpdate.msg)
         .where('iduser = ?', toUpdate.iduser)
         .toString();
-    console.log(query);
+    //console.log(query);
     db.none(query)
         .then(() => {
             sender.sendResponse(sender.SUCCESS_STATUS, {
