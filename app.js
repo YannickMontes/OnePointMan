@@ -12,10 +12,11 @@ var groups = require('./routes/groups');
 var pinpoint = require('./routes/pinpoint');
 var drawing = require('./routes/drawing');
 var tracking = require('./routes/tracking');
-var socket = require('./socket');
+
 
 var app = express();
 
+var socket = require('./socket');
 
 //app.set('views', path.join(__dirname, 'views'));
 // uncomment after placing your favicon in /public

@@ -1,14 +1,17 @@
-const express = require('express');
-const socket = require('http').createServer(express);
-const io = require('socket.io').listen(socket);
+const serveur = require('./app.js');
+const socketIO = require('socket.io');
+
+//const io = require('socket.io').listen(serveur, () => {console.log("Socket is listening on serveur adress"});
 
 const mapSocketUser = new Map();
 const ADD_GROUP_NOTIFICATION_TYPE = 'ADDED_TO_GROUP';
 const REMOVE_GROUP_NOTIFICATION_TYPE = 'REMOVED_FROM_GROUP';
 
-socket.listen(5000, () =>{
+/*socket.listen(5000, () =>{
 	console.log("Socket listening on port 5000");
-});
+});*/
+
+const io = socketIO(serveur);
 
 io.on('connection', function (clientSocket) {
 
