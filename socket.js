@@ -1,6 +1,6 @@
 const express = require('express');
-const socket = require('http').Server(express);
-const io = require('socket.io')(socket);
+const socket = require('http').createServer(express);
+const io = require('socket.io').listen(socket);
 
 const mapSocketUser = new Map();
 const ADD_GROUP_NOTIFICATION_TYPE = 'ADDED_TO_GROUP';
