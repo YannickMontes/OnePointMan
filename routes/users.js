@@ -53,6 +53,7 @@ router.post(('/updateposition'), function (req, res) {
                                 .set('userglg', toUpdate.userlg)
                                 .set('dateposition', currentTime.toISOString())
                                 .where('iduser = ?', toUpdate.iduser)
+                                .where('idgroup = ?', element.idgroup)
                                 .toString();
                             db.none(query)
                                 .then(() => {
