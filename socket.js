@@ -1,6 +1,5 @@
 const serveur = require('./app.js');
 const socketIO = require('socket.io');
-const socket = require('http').createServer(express);
 
 //const io = require('socket.io').listen(serveur, () => {console.log("Socket is listening on serveur adress"});
 
@@ -67,10 +66,11 @@ const sendNotification = (notificationType, userIdToNotif, ...data) => {
     }
 };
 
-
+/*
 socket.mapSocketUser = mapSocketUser;
 socket.sendNotification = sendNotification;
 socket.ADD_GROUP_NOTIFICATION_TYPE = ADD_GROUP_NOTIFICATION_TYPE;
 socket.REMOVE_GROUP_NOTIFICATION_TYPE = REMOVE_GROUP_NOTIFICATION_TYPE;
-
+*/
+socket = []
 module.exports = socket;
