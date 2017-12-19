@@ -1,5 +1,6 @@
 const serveur = require('./app.js');
 const socketIO = require('socket.io');
+const socket = require('http').createServer(express);
 
 //const io = require('socket.io').listen(serveur, () => {console.log("Socket is listening on serveur adress"});
 
