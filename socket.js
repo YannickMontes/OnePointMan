@@ -11,7 +11,7 @@ const REMOVE_GROUP_NOTIFICATION_TYPE = 'REMOVED_FROM_GROUP';
 	console.log("Socket listening on port 5000");
 });*/
 
-const io = socketIO(serveur);
+const io = socketIO.listen(serveur);
 
 io.on('connection', function (clientSocket) {
 
