@@ -299,14 +299,14 @@ function buildTrackingArray(array) {
         toReturn.forEach((newEl, index) => {
             if (parseInt(newEl.iduser) === parseInt(element.iduser)) {
                 containsIdUser = true;
-                indexInReturn = index
+                indexInReturn = index;
             }
         });
         if (containsIdUser) {
-            toReturn[indexInReturn].tracking.push({lt: element.lt, lg: element.lg});
+            toReturn[indexInReturn].tracking.push({lat: element.lat, lng: element.lng});
         }
         else {
-            toReturn.push({iduser: parseInt(element.iduser), tracking: [{lt: element.lt, lg: element.lg}]})
+            toReturn.push({iduser: parseInt(element.iduser), tracking: [{lat: element.lat, lng: element.lng}]})
         }
     });
     return toReturn;
