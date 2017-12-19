@@ -85,6 +85,7 @@ let getGroups = (iduser) =>
         .field('ugr.sharesposition')
         .field('ugr.istracking')
         .where('ugr.iduser = ?', iduser)
+        .order('ugr.idgroup')
         .left_join('public."GROUP"', 'gr', 'ugr.idgroup = gr.idgroup')
 ;
 
@@ -100,6 +101,7 @@ let getUsersInGroups = (iduser) =>
         .field('usr.iduser')
         .field('listgroups.nom', 'nomgroup')
         .field('ugr.idgroup')
+        .order('ugr.idgroup')
         .toString();
 
 function buildGroupsObject(queryResult) {
